@@ -1,0 +1,18 @@
+Removed Pin From Net: NetName=VIN Pin=IP_1-1
+Removed Pin From Net: NetName=NetIP_1_2 Pin=IP_1-2
+Removed Pin From Net: NetName=NetIP_1_3 Pin=IP_1-3
+Removed Pin From Net: NetName=NetIP_1_4 Pin=IP_1-4
+Removed Pin From Net: NetName=NetIP_1_5 Pin=IP_1-5
+Removed Pin From Net: NetName=NetIP_1_6 Pin=IP_1-6
+Removed Pin From Net: NetName=NetIP_1_7 Pin=IP_1-7
+Removed Pin From Net: NetName=VOUT Pin=IP_1-8
+Added Component: Designator=IP_1(IP5306)
+Added Pin To Net: NetName=VIN Pin=IP_1-1
+Added Pin To Net: NetName=NetIP_1_2 Pin=IP_1-2
+Added Pin To Net: NetName=NetIP_1_3 Pin=IP_1-3
+Added Pin To Net: NetName=NetIP_1_4 Pin=IP_1-4
+Added Pin To Net: NetName=NetIP_1_5 Pin=IP_1-5
+Added Pin To Net: NetName=NetIP_1_6 Pin=IP_1-6
+Added Pin To Net: NetName=NetIP_1_7 Pin=IP_1-7
+Added Pin To Net: NetName=VOUT Pin=IP_1-8
+Added Pin To Net: NetName=GND Pin=IP_1-9

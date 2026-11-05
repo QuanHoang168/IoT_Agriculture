@@ -1,0 +1,19 @@
+Added Component: Designator=USB?(USB Micro 5p DIP)
+Add component (AddParameter): Name = "Ma_Hang"; Value = "MH005145"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ten"; Value = "MicroUSB MK5P DIP"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=Schematic_RFID Member=Component C? 105
+Added Member To Class: ClassName=Schematic_RFID Member=Component C? 471
+Added Member To Class: ClassName=Schematic_RFID Member=Component C? 10uF
+Added Member To Class: ClassName=Schematic_RFID Member=Component C? 105
+Added Member To Class: ClassName=Schematic_RFID Member=Component C? 471
+Added Member To Class: ClassName=Schematic_RFID Member=Component C? 471
+Added Member To Class: ClassName=Schematic_RFID Member=Component JP? jump noi sw
+Added Member To Class: ClassName=Schematic_RFID Member=Component L? LED3 75%
+Added Member To Class: ClassName=Schematic_RFID Member=Component L? LED1 25%
+Added Member To Class: ClassName=Schematic_RFID Member=Component L? LED4 100%
+Added Member To Class: ClassName=Schematic_RFID Member=Component L? LED2 50%
+Added Member To Class: ClassName=Schematic_RFID Member=Component R? 1k
+Added Member To Class: ClassName=Schematic_RFID Member=Component R? 1k
+Added Member To Class: ClassName=Schematic_RFID Member=Component R? 10k
+Added Member To Class: ClassName=Schematic_RFID Member=Component R? 1k
+Added Member To Class: ClassName=Schematic_RFID Member=Component USB? USB Micro 5p DIP

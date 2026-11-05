@@ -1,0 +1,585 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD21\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2025-05-27</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">5:21:56 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc" class="file"><acronym title="D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc">D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">79</td></tr>
+</table>
+</td>
+</table><a name="IDZ2EI4IZVFV3AELWD4YUWGVLWYIBBM03PRFARK3CDHRYTFJYR2LUP"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDGRVAPKN4GUWLMLN5UZW0TJXTPHPZBU542KDYNMIBZJLOHYAVUBYK">Clearance Constraint (Gap=0.3mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDGO5T0425Y5DKJHCPM0D1X252JETOFRUGPIVU3TKFSCSWPVW3QYVB">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAEN330R0SCDRLIHI3PRFBQLWVAAQFBEP3QCINOYMWGO0EYDVSYK">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDL0EMCRRMMIBSL14DOFRLXSFO1M0MOODMS5G2YKND0QO1QPTPF1OH">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDNQR1NBBZMRRYKCCKPI1XWKMEIMC3YZVMRKXYRVENT2DKYWYUVVOI">Width Constraint (Min=0.5mm) (Max=1.5mm) (Preferred=1mm) (InNet('3V3_2'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDK515RKUPZGZECC32XOHMEB41JEA1HVWLEX3KX0ZYS45VAHT3XBM">Width Constraint (Min=0.5mm) (Max=1.5mm) (Preferred=1mm) (InNet('3V3_1'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDTMZ4BTXVNBP1EGEYF0W5PM4XCMEUTHFSQBW1PB3013JTGQNU5PH">Width Constraint (Min=0.5mm) (Max=1.5mm) (Preferred=1mm) (InNet('5V'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDOZMF5SCQGY4UNOV4RC4JUVIDTPHW50P1GG23JO53SIMGVMQHSSL">Width Constraint (Min=0.3mm) (Max=1.5mm) (Preferred=0.5mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDSRE2MKNZC5WCIWHRYLIGIXIKDKIUJ0GYZR14YVOREKVATPC2OMZD">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDP42A4L3RGCXZGBRSXSQXZ4KGLGO2D1DS4BYKZRL2Z03WY0CE140O">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDWEKG0PA4QFRLCJPOY1Y5NDGPTBG5BEVRMLCNU0BLVIM0MOIGNAAL">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZVBFXBB3C1W4JSYVDC5TS3FFEIKKEADUTNP1IXLVEBAI1TXVUUBP">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDN0XI40CQGXR0FJ2AP3L4W1O1YJJD50FN5WQ3HVO3D5M2MRRU2CCH">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">75</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID1FRLTWBQ4SXSOISJZ3WZ322IKK0524LIJGDKGTLZYWWV3JUE3VOG">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDYE4552OLAF0XBOSSUCS4LX5HXILGTOW5D1BSLLCQMASC4ZTMDO3M">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDW04LXAVABIFWYAJ5UBEVVHRYFL1DMTCHJQ0RQL5CWQASB3TBEQF">Room Cam_bien_Sche (Bounding Region = (9.906mm, 20.574mm, 96.266mm, 107.569mm) (InComponentClass('Cam_bien_Sche'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDXKT43MUSNZYCH2VLAMIVKRXWM4WG4J5NWV3Y4J5PPWAYHPL23WF">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">79</td>
+</tr>
+</table><br><a name="IDP42A4L3RGCXZGBRSXSQXZ4KGLGO2D1DS4BYKZRL2Z03WY0CE140O"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1487.035mil|Location2.X=1606.395mil|Location1.Y=1180.32mil|Location2.Y=1299.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1487.035mil|Location2.X=1606.395mil|Location1.Y=1180.32mil|Location2.Y=1299.68mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Via (13.887mm,6.096mm) from Top Layer to Bottom Layer Actual Hole Size = 3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1487.035mil|Location2.X=1606.395mil|Location1.Y=3845.32mil|Location2.Y=3964.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1487.035mil|Location2.X=1606.395mil|Location1.Y=3845.32mil|Location2.Y=3964.68mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Via (13.887mm,73.787mm) from Top Layer to Bottom Layer Actual Hole Size = 3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3325.32mil|Location2.X=3444.68mil|Location1.Y=1180.32mil|Location2.Y=1299.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3325.32mil|Location2.X=3444.68mil|Location1.Y=1180.32mil|Location2.Y=1299.68mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Via (60.579mm,6.096mm) from Top Layer to Bottom Layer Actual Hole Size = 3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3325.32mil|Location2.X=3444.68mil|Location1.Y=3855.32mil|Location2.Y=3974.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3325.32mil|Location2.X=3444.68mil|Location1.Y=3855.32mil|Location2.Y=3974.68mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Via (60.579mm,74.041mm) from Top Layer to Bottom Layer Actual Hole Size = 3mm</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDN0XI40CQGXR0FJ2AP3L4W1O1YJJD50FN5WQ3HVO3D5M2MRRU2CCH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1771.494mil|Location2.X=1782.744mil|Location1.Y=3819.205mil|Location2.Y=3831.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1771.494mil|Location2.X=1782.744mil|Location1.Y=3819.205mil|Location2.Y=3831.68mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.047mm &lt; 0.254mm) Between Arc (20.955mm,72.517mm) on Top Overlay And Pad KF1-2(20.955mm,72.517mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1971.494mil|Location2.X=1982.744mil|Location1.Y=3819.205mil|Location2.Y=3831.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1971.494mil|Location2.X=1982.744mil|Location1.Y=3819.205mil|Location2.Y=3831.68mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.047mm &lt; 0.254mm) Between Arc (26.035mm,72.517mm) on Top Overlay And Pad KF1-1(26.035mm,72.517mm) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2924.611mil|Location2.X=2935.861mil|Location1.Y=3326.541mil|Location2.Y=3337.791mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2924.611mil|Location2.X=2935.861mil|Location1.Y=3326.541mil|Location2.Y=3337.791mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad AMS1-1(48.528mm,60.537mm) on Top Layer And Track (42.878mm,59.037mm)(49.578mm,59.037mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2834.06mil|Location2.X=2845.31mil|Location1.Y=3326.541mil|Location2.Y=3337.791mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2834.06mil|Location2.X=2845.31mil|Location1.Y=3326.541mil|Location2.Y=3337.791mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad AMS1-2(46.228mm,60.537mm) on Top Layer And Track (42.878mm,59.037mm)(49.578mm,59.037mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2743.509mil|Location2.X=2754.759mil|Location1.Y=3326.541mil|Location2.Y=3337.791mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2743.509mil|Location2.X=2754.759mil|Location1.Y=3326.541mil|Location2.Y=3337.791mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad AMS1-3(43.928mm,60.537mm) on Top Layer And Track (42.878mm,59.037mm)(49.578mm,59.037mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2749.414mil|Location2.X=2760.664mil|Location1.Y=3200.556mil|Location2.Y=3211.806mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2749.414mil|Location2.X=2760.664mil|Location1.Y=3200.556mil|Location2.Y=3211.806mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad AMS1-4(46.228mm,54.737mm) on Top Layer And Track (42.878mm,56.237mm)(49.578mm,56.237mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2479.611mil|Location2.X=2490.861mil|Location1.Y=3327.367mil|Location2.Y=3338.617mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2479.611mil|Location2.X=2490.861mil|Location1.Y=3327.367mil|Location2.Y=3338.617mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad AMS2-1(37.225mm,60.558mm) on Top Layer And Track (31.575mm,59.058mm)(38.275mm,59.058mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2389.06mil|Location2.X=2400.31mil|Location1.Y=3327.367mil|Location2.Y=3338.617mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2389.06mil|Location2.X=2400.31mil|Location1.Y=3327.367mil|Location2.Y=3338.617mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad AMS2-2(34.925mm,60.558mm) on Top Layer And Track (31.575mm,59.058mm)(38.275mm,59.058mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2298.509mil|Location2.X=2309.759mil|Location1.Y=3327.367mil|Location2.Y=3338.617mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2298.509mil|Location2.X=2309.759mil|Location1.Y=3327.367mil|Location2.Y=3338.617mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad AMS2-3(32.625mm,60.558mm) on Top Layer And Track (31.575mm,59.058mm)(38.275mm,59.058mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2304.414mil|Location2.X=2315.664mil|Location1.Y=3201.383mil|Location2.Y=3212.633mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2304.414mil|Location2.X=2315.664mil|Location1.Y=3201.383mil|Location2.Y=3212.633mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad AMS2-4(34.925mm,54.758mm) on Top Layer And Track (31.575mm,56.258mm)(38.275mm,56.258mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.2mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2903.222mil|Location2.X=2910.889mil|Location1.Y=1461.222mil|Location2.Y=1468.889mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2903.222mil|Location2.X=2910.889mil|Location1.Y=1461.222mil|Location2.Y=1468.889mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C1-2(49.149mm,11.43mm) on Multi-Layer And Track (47.904mm,11.278mm)(50.419mm,13.792mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2909.299mil|Location2.X=2916.966mil|Location1.Y=1434.299mil|Location2.Y=1441.966mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2909.299mil|Location2.X=2916.966mil|Location1.Y=1434.299mil|Location2.Y=1441.966mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C1-2(49.149mm,11.43mm) on Multi-Layer And Track (48.057mm,10.592mm)(50.419mm,12.954mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2928.148mil|Location2.X=2935.814mil|Location1.Y=1418.148mil|Location2.Y=1425.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2928.148mil|Location2.X=2935.814mil|Location1.Y=1418.148mil|Location2.Y=1425.814mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C1-2(49.149mm,11.43mm) on Multi-Layer And Track (48.412mm,10.058mm)(50.419mm,12.065mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2950.175mil|Location2.X=2961.425mil|Location1.Y=1419.638mil|Location2.Y=1430.888mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2950.175mil|Location2.X=2961.425mil|Location1.Y=1419.638mil|Location2.Y=1430.888mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.194mm &lt; 0.254mm) Between Pad C1-2(49.149mm,11.43mm) on Multi-Layer And Track (48.768mm,9.576mm)(50.419mm,11.227mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2407.834mil|Location2.X=2415.5mil|Location1.Y=1461.222mil|Location2.Y=1468.889mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2407.834mil|Location2.X=2415.5mil|Location1.Y=1461.222mil|Location2.Y=1468.889mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C2-2(36.566mm,11.43mm) on Multi-Layer And Track (35.322mm,11.278mm)(37.836mm,13.792mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2413.911mil|Location2.X=2421.578mil|Location1.Y=1434.299mil|Location2.Y=1441.966mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2413.911mil|Location2.X=2421.578mil|Location1.Y=1434.299mil|Location2.Y=1441.966mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C2-2(36.566mm,11.43mm) on Multi-Layer And Track (35.474mm,10.592mm)(37.836mm,12.954mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2432.759mil|Location2.X=2440.426mil|Location1.Y=1418.148mil|Location2.Y=1425.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2432.759mil|Location2.X=2440.426mil|Location1.Y=1418.148mil|Location2.Y=1425.814mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C2-2(36.566mm,11.43mm) on Multi-Layer And Track (35.83mm,10.058mm)(37.836mm,12.065mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2454.786mil|Location2.X=2466.036mil|Location1.Y=1419.638mil|Location2.Y=1430.888mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2454.786mil|Location2.X=2466.036mil|Location1.Y=1419.638mil|Location2.Y=1430.888mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.194mm &lt; 0.254mm) Between Pad C2-2(36.566mm,11.43mm) on Multi-Layer And Track (36.185mm,9.576mm)(37.836mm,11.227mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2015.382mil|Location2.X=2023.049mil|Location1.Y=1447.3mil|Location2.Y=1454.967mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2015.382mil|Location2.X=2023.049mil|Location1.Y=1447.3mil|Location2.Y=1454.967mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C3-2(26.538mm,11.474mm) on Multi-Layer And Track (25.268mm,10.839mm)(27.275mm,12.846mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2018.393mil|Location2.X=2029.643mil|Location1.Y=1470.847mil|Location2.Y=1482.097mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2018.393mil|Location2.X=2029.643mil|Location1.Y=1470.847mil|Location2.Y=1482.097mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.194mm &lt; 0.254mm) Between Pad C3-2(26.538mm,11.474mm) on Multi-Layer And Track (25.268mm,11.677mm)(26.919mm,13.328mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2052.103mil|Location2.X=2059.769mil|Location1.Y=1416.021mil|Location2.Y=1423.687mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2052.103mil|Location2.X=2059.769mil|Location1.Y=1416.021mil|Location2.Y=1423.687mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C3-2(26.538mm,11.474mm) on Multi-Layer And Track (25.268mm,9.112mm)(27.783mm,11.626mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2027.089mil|Location2.X=2034.755mil|Location1.Y=1424.007mil|Location2.Y=1431.673mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2027.089mil|Location2.X=2034.755mil|Location1.Y=1424.007mil|Location2.Y=1431.673mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C3-2(26.538mm,11.474mm) on Multi-Layer And Track (25.268mm,9.95mm)(27.631mm,12.312mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1484.047mil|Location2.X=1491.713mil|Location1.Y=3603.287mil|Location2.Y=3610.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1484.047mil|Location2.X=1491.713mil|Location1.Y=3603.287mil|Location2.Y=3610.953mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C4-2(12.319mm,66.548mm) on Multi-Layer And Track (10.795mm,67.818mm)(13.157mm,65.456mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1477.447mil|Location2.X=1485.114mil|Location1.Y=3644.886mil|Location2.Y=3652.552mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1477.447mil|Location2.X=1485.114mil|Location1.Y=3644.886mil|Location2.Y=3652.552mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C4-2(12.319mm,66.548mm) on Multi-Layer And Track (11.684mm,67.818mm)(13.691mm,65.811mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1504.112mil|Location2.X=1515.362mil|Location1.Y=3635.175mil|Location2.Y=3646.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1504.112mil|Location2.X=1515.362mil|Location1.Y=3635.175mil|Location2.Y=3646.425mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.194mm &lt; 0.254mm) Between Pad C4-2(12.319mm,66.548mm) on Multi-Layer And Track (12.522mm,67.818mm)(14.173mm,66.167mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.285mil|Location2.X=1456.952mil|Location1.Y=3605.048mil|Location2.Y=3612.715mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.285mil|Location2.X=1456.952mil|Location1.Y=3605.048mil|Location2.Y=3612.715mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C4-2(12.319mm,66.548mm) on Multi-Layer And Track (9.957mm,67.818mm)(12.471mm,65.303mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1484.047mil|Location2.X=1491.713mil|Location1.Y=3159.287mil|Location2.Y=3166.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1484.047mil|Location2.X=1491.713mil|Location1.Y=3159.287mil|Location2.Y=3166.953mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C5-2(12.319mm,55.27mm) on Multi-Layer And Track (10.795mm,56.54mm)(13.157mm,54.178mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1477.447mil|Location2.X=1485.114mil|Location1.Y=3200.886mil|Location2.Y=3208.552mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1477.447mil|Location2.X=1485.114mil|Location1.Y=3200.886mil|Location2.Y=3208.552mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C5-2(12.319mm,55.27mm) on Multi-Layer And Track (11.684mm,56.54mm)(13.691mm,54.534mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1504.112mil|Location2.X=1515.362mil|Location1.Y=3191.175mil|Location2.Y=3202.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1504.112mil|Location2.X=1515.362mil|Location1.Y=3191.175mil|Location2.Y=3202.425mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.194mm &lt; 0.254mm) Between Pad C5-2(12.319mm,55.27mm) on Multi-Layer And Track (12.522mm,56.54mm)(14.173mm,54.889mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.285mil|Location2.X=1456.952mil|Location1.Y=3161.048mil|Location2.Y=3168.715mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.285mil|Location2.X=1456.952mil|Location1.Y=3161.048mil|Location2.Y=3168.715mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C5-2(12.319mm,55.27mm) on Multi-Layer And Track (9.957mm,56.54mm)(12.471mm,54.026mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1484.047mil|Location2.X=1491.713mil|Location1.Y=2715.287mil|Location2.Y=2722.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1484.047mil|Location2.X=1491.713mil|Location1.Y=2715.287mil|Location2.Y=2722.953mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C6-2(12.319mm,43.993mm) on Multi-Layer And Track (10.795mm,45.263mm)(13.157mm,42.901mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1477.447mil|Location2.X=1485.114mil|Location1.Y=2756.886mil|Location2.Y=2764.552mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1477.447mil|Location2.X=1485.114mil|Location1.Y=2756.886mil|Location2.Y=2764.552mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C6-2(12.319mm,43.993mm) on Multi-Layer And Track (11.684mm,45.263mm)(13.691mm,43.256mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1504.112mil|Location2.X=1515.362mil|Location1.Y=2747.175mil|Location2.Y=2758.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1504.112mil|Location2.X=1515.362mil|Location1.Y=2747.175mil|Location2.Y=2758.425mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.194mm &lt; 0.254mm) Between Pad C6-2(12.319mm,43.993mm) on Multi-Layer And Track (12.522mm,45.263mm)(14.173mm,43.612mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.285mil|Location2.X=1456.952mil|Location1.Y=2717.048mil|Location2.Y=2724.715mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.285mil|Location2.X=1456.952mil|Location1.Y=2717.048mil|Location2.Y=2724.715mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C6-2(12.319mm,43.993mm) on Multi-Layer And Track (9.957mm,45.263mm)(12.471mm,42.748mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1484.047mil|Location2.X=1491.713mil|Location1.Y=2271.287mil|Location2.Y=2278.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1484.047mil|Location2.X=1491.713mil|Location1.Y=2271.287mil|Location2.Y=2278.953mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C7-2(12.319mm,32.715mm) on Multi-Layer And Track (10.795mm,33.985mm)(13.157mm,31.623mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1477.447mil|Location2.X=1485.114mil|Location1.Y=2312.886mil|Location2.Y=2320.552mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1477.447mil|Location2.X=1485.114mil|Location1.Y=2312.886mil|Location2.Y=2320.552mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C7-2(12.319mm,32.715mm) on Multi-Layer And Track (11.684mm,33.985mm)(13.691mm,31.979mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1504.112mil|Location2.X=1515.362mil|Location1.Y=2303.175mil|Location2.Y=2314.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1504.112mil|Location2.X=1515.362mil|Location1.Y=2303.175mil|Location2.Y=2314.425mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.194mm &lt; 0.254mm) Between Pad C7-2(12.319mm,32.715mm) on Multi-Layer And Track (12.522mm,33.985mm)(14.173mm,32.334mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.285mil|Location2.X=1456.952mil|Location1.Y=2273.048mil|Location2.Y=2280.715mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.285mil|Location2.X=1456.952mil|Location1.Y=2273.048mil|Location2.Y=2280.715mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C7-2(12.319mm,32.715mm) on Multi-Layer And Track (9.957mm,33.985mm)(12.471mm,31.471mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1484.047mil|Location2.X=1491.713mil|Location1.Y=1827.287mil|Location2.Y=1834.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1484.047mil|Location2.X=1491.713mil|Location1.Y=1827.287mil|Location2.Y=1834.953mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C8-2(12.319mm,21.438mm) on Multi-Layer And Track (10.795mm,22.708mm)(13.157mm,20.345mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1477.447mil|Location2.X=1485.114mil|Location1.Y=1868.886mil|Location2.Y=1876.553mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1477.447mil|Location2.X=1485.114mil|Location1.Y=1868.886mil|Location2.Y=1876.553mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C8-2(12.319mm,21.438mm) on Multi-Layer And Track (11.684mm,22.708mm)(13.691mm,20.701mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1504.112mil|Location2.X=1515.362mil|Location1.Y=1859.175mil|Location2.Y=1870.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1504.112mil|Location2.X=1515.362mil|Location1.Y=1859.175mil|Location2.Y=1870.425mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.194mm &lt; 0.254mm) Between Pad C8-2(12.319mm,21.438mm) on Multi-Layer And Track (12.522mm,22.708mm)(14.173mm,21.057mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.285mil|Location2.X=1456.952mil|Location1.Y=1829.048mil|Location2.Y=1836.715mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.285mil|Location2.X=1456.952mil|Location1.Y=1829.048mil|Location2.Y=1836.715mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C8-2(12.319mm,21.438mm) on Multi-Layer And Track (9.957mm,22.708mm)(12.471mm,20.193mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1484.047mil|Location2.X=1491.713mil|Location1.Y=1383.287mil|Location2.Y=1390.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1484.047mil|Location2.X=1491.713mil|Location1.Y=1383.287mil|Location2.Y=1390.953mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C9-2(12.319mm,10.16mm) on Multi-Layer And Track (10.795mm,11.43mm)(13.157mm,9.068mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1477.447mil|Location2.X=1485.114mil|Location1.Y=1424.886mil|Location2.Y=1432.553mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1477.447mil|Location2.X=1485.114mil|Location1.Y=1424.886mil|Location2.Y=1432.553mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C9-2(12.319mm,10.16mm) on Multi-Layer And Track (11.684mm,11.43mm)(13.691mm,9.423mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1504.112mil|Location2.X=1515.362mil|Location1.Y=1415.175mil|Location2.Y=1426.425mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1504.112mil|Location2.X=1515.362mil|Location1.Y=1415.175mil|Location2.Y=1426.425mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.194mm &lt; 0.254mm) Between Pad C9-2(12.319mm,10.16mm) on Multi-Layer And Track (12.522mm,11.43mm)(14.173mm,9.779mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.194mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.285mil|Location2.X=1456.952mil|Location1.Y=1385.048mil|Location2.Y=1392.715mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1449.285mil|Location2.X=1456.952mil|Location1.Y=1385.048mil|Location2.Y=1392.715mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad C9-2(12.319mm,10.16mm) on Multi-Layer And Track (9.957mm,11.43mm)(12.471mm,8.915mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2005.438mil|Location2.Y=2016.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2005.438mil|Location2.Y=2016.688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.173mm &lt; 0.254mm) Between Pad ESP1-16(53.44mm,25.681mm) on Multi-Layer And Track (54.964mm,66.575mm)(54.964mm,15.521mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.173mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2105.438mil|Location2.Y=2116.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2105.438mil|Location2.Y=2116.688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.173mm &lt; 0.254mm) Between Pad ESP1-17(53.44mm,28.221mm) on Multi-Layer And Track (54.964mm,66.575mm)(54.964mm,15.521mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.173mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2205.438mil|Location2.Y=2216.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2205.438mil|Location2.Y=2216.688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.173mm &lt; 0.254mm) Between Pad ESP1-18(53.44mm,30.761mm) on Multi-Layer And Track (54.964mm,66.575mm)(54.964mm,15.521mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.173mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2305.438mil|Location2.Y=2316.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2305.438mil|Location2.Y=2316.688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.173mm &lt; 0.254mm) Between Pad ESP1-19(53.44mm,33.301mm) on Multi-Layer And Track (54.964mm,66.575mm)(54.964mm,15.521mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.173mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2405.438mil|Location2.Y=2416.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2405.438mil|Location2.Y=2416.688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.173mm &lt; 0.254mm) Between Pad ESP1-20(53.44mm,35.841mm) on Multi-Layer And Track (54.964mm,66.575mm)(54.964mm,15.521mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.173mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2505.438mil|Location2.Y=2516.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2505.438mil|Location2.Y=2516.688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.173mm &lt; 0.254mm) Between Pad ESP1-21(53.44mm,38.381mm) on Multi-Layer And Track (54.964mm,66.575mm)(54.964mm,15.521mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.173mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2605.438mil|Location2.Y=2616.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2605.438mil|Location2.Y=2616.688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.173mm &lt; 0.254mm) Between Pad ESP1-22(53.44mm,40.921mm) on Multi-Layer And Track (54.964mm,66.575mm)(54.964mm,15.521mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.173mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2705.438mil|Location2.Y=2716.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2705.438mil|Location2.Y=2716.688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.173mm &lt; 0.254mm) Between Pad ESP1-23(53.44mm,43.461mm) on Multi-Layer And Track (54.964mm,66.575mm)(54.964mm,15.521mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.173mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2805.438mil|Location2.Y=2816.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2805.438mil|Location2.Y=2816.688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.173mm &lt; 0.254mm) Between Pad ESP1-24(53.44mm,46.001mm) on Multi-Layer And Track (54.964mm,66.575mm)(54.964mm,15.521mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.173mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2905.438mil|Location2.Y=2916.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=2905.438mil|Location2.Y=2916.688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.173mm &lt; 0.254mm) Between Pad ESP1-25(53.44mm,48.541mm) on Multi-Layer And Track (54.964mm,66.575mm)(54.964mm,15.521mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.173mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=3005.438mil|Location2.Y=3016.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=3005.438mil|Location2.Y=3016.688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.173mm &lt; 0.254mm) Between Pad ESP1-26(53.44mm,51.081mm) on Multi-Layer And Track (54.964mm,66.575mm)(54.964mm,15.521mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.173mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=3105.438mil|Location2.Y=3116.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=3105.438mil|Location2.Y=3116.688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.173mm &lt; 0.254mm) Between Pad ESP1-27(53.44mm,53.621mm) on Multi-Layer And Track (54.964mm,66.575mm)(54.964mm,15.521mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.173mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=3205.438mil|Location2.Y=3216.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=3205.438mil|Location2.Y=3216.688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.173mm &lt; 0.254mm) Between Pad ESP1-28(53.44mm,56.161mm) on Multi-Layer And Track (54.964mm,66.575mm)(54.964mm,15.521mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.173mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=3305.438mil|Location2.Y=3316.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=3305.438mil|Location2.Y=3316.688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.173mm &lt; 0.254mm) Between Pad ESP1-29(53.44mm,58.701mm) on Multi-Layer And Track (54.964mm,66.575mm)(54.964mm,15.521mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.173mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=3405.438mil|Location2.Y=3416.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3150.961mil|Location2.X=3162.211mil|Location1.Y=3405.438mil|Location2.Y=3416.688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.173mm &lt; 0.254mm) Between Pad ESP1-30(53.44mm,61.241mm) on Multi-Layer And Track (54.964mm,66.575mm)(54.964mm,15.521mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.173mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=3719.375mil|Location2.Y=3730.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=3719.375mil|Location2.Y=3730.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.217mm &lt; 0.254mm) Between Pad H1-2(4.699mm,69.215mm) on Multi-Layer And Track (5.969mm,64.313mm)(5.969mm,74.041mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.217mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=3819.375mil|Location2.Y=3830.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=3819.375mil|Location2.Y=3830.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.217mm &lt; 0.254mm) Between Pad H1-3(4.699mm,71.755mm) on Multi-Layer And Track (5.969mm,64.313mm)(5.969mm,74.041mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.217mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=3264.375mil|Location2.Y=3275.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=3264.375mil|Location2.Y=3275.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.217mm &lt; 0.254mm) Between Pad H2-2(4.699mm,57.658mm) on Multi-Layer And Track (5.969mm,52.756mm)(5.969mm,62.484mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.217mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=3364.375mil|Location2.Y=3375.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=3364.375mil|Location2.Y=3375.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.217mm &lt; 0.254mm) Between Pad H2-3(4.699mm,60.198mm) on Multi-Layer And Track (5.969mm,52.756mm)(5.969mm,62.484mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.217mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1222.212mil|Location2.X=1233.462mil|Location1.Y=2795.422mil|Location2.Y=2806.672mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1222.212mil|Location2.X=1233.462mil|Location1.Y=2795.422mil|Location2.Y=2806.672mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.217mm &lt; 0.254mm) Between Pad H3-2(4.726mm,45.747mm) on Multi-Layer And Track (5.996mm,40.844mm)(5.996mm,50.573mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.217mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1222.212mil|Location2.X=1233.462mil|Location1.Y=2895.422mil|Location2.Y=2906.672mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1222.212mil|Location2.X=1233.462mil|Location1.Y=2895.422mil|Location2.Y=2906.672mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.217mm &lt; 0.254mm) Between Pad H3-3(4.726mm,48.287mm) on Multi-Layer And Track (5.996mm,40.844mm)(5.996mm,50.573mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.217mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=1379.375mil|Location2.Y=1390.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=1379.375mil|Location2.Y=1390.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.217mm &lt; 0.254mm) Between Pad H4-2(4.699mm,9.779mm) on Multi-Layer And Track (5.969mm,4.877mm)(5.969mm,14.605mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.217mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=1479.375mil|Location2.Y=1490.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=1479.375mil|Location2.Y=1490.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.217mm &lt; 0.254mm) Between Pad H4-3(4.699mm,12.319mm) on Multi-Layer And Track (5.969mm,4.877mm)(5.969mm,14.605mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.217mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=1849.375mil|Location2.Y=1860.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=1849.375mil|Location2.Y=1860.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.217mm &lt; 0.254mm) Between Pad H5-2(4.699mm,21.717mm) on Multi-Layer And Track (5.969mm,16.815mm)(5.969mm,26.543mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.217mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=1949.375mil|Location2.Y=1960.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=1949.375mil|Location2.Y=1960.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.217mm &lt; 0.254mm) Between Pad H5-3(4.699mm,24.257mm) on Multi-Layer And Track (5.969mm,16.815mm)(5.969mm,26.543mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.217mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=2324.375mil|Location2.Y=2335.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=2324.375mil|Location2.Y=2335.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.217mm &lt; 0.254mm) Between Pad H6-2(4.699mm,33.782mm) on Multi-Layer And Track (5.969mm,28.88mm)(5.969mm,38.608mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.217mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=2424.375mil|Location2.Y=2435.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1221.165mil|Location2.X=1232.415mil|Location1.Y=2424.375mil|Location2.Y=2435.625mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.217mm &lt; 0.254mm) Between Pad H6-3(4.699mm,36.322mm) on Multi-Layer And Track (5.969mm,28.88mm)(5.969mm,38.608mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.217mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1982.329mil|Location2.X=1989.996mil|Location1.Y=3812.329mil|Location2.Y=3819.996mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1982.329mil|Location2.X=1989.996mil|Location1.Y=3812.329mil|Location2.Y=3819.996mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad KF1-1(26.035mm,72.517mm) on Multi-Layer And Track (24.943mm,71.425mm)(27.102mm,73.584mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1782.329mil|Location2.X=1789.996mil|Location1.Y=3812.329mil|Location2.Y=3819.996mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Altium_Practice\IoT_Agriculture\Mach_cam_bien\Mach_cam_bien_V2\Mach_CB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1782.329mil|Location2.X=1789.996mil|Location1.Y=3812.329mil|Location2.Y=3819.996mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.254mm) Between Pad KF1-2(20.955mm,72.517mm) on Multi-Layer And Track (19.875mm,71.438mm)(22.022mm,73.584mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

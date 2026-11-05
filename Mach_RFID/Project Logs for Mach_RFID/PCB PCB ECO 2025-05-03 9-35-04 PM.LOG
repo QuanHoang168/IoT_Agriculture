@@ -1,0 +1,22 @@
+Added Component: Designator=IP_?(IP5306)
+Added Pin To Net: NetName=VIN Pin=IP_?-1
+Added Pin To Net: NetName=VOUT Pin=IP_?-8
+Added Pin To Net: NetName=NetIP_?_2 Pin=IP_?-2
+Added Pin To Net: NetName=NetIP_?_2 Pin=R1-2
+Added Net: Name=NetIP_?_2
+Added Pin To Net: NetName=NetIP_?_3 Pin=IP_?-3
+Added Pin To Net: NetName=NetIP_?_3 Pin=R2-2
+Added Net: Name=NetIP_?_3
+Added Pin To Net: NetName=NetIP_?_4 Pin=IP_?-4
+Added Pin To Net: NetName=NetIP_?_4 Pin=R3-2
+Added Net: Name=NetIP_?_4
+Added Pin To Net: NetName=NetIP_?_5 Pin=IP_?-5
+Added Pin To Net: NetName=NetIP_?_5 Pin=R5-1
+Added Net: Name=NetIP_?_5
+Added Pin To Net: NetName=NetIP_?_6 Pin=IP_?-6
+Added Pin To Net: NetName=NetIP_?_6 Pin=R4-1
+Added Net: Name=NetIP_?_6
+Added Pin To Net: NetName=NetIP_?_7 Pin=IP_?-7
+Added Pin To Net: NetName=NetIP_?_7 Pin=L1-1
+Added Net: Name=NetIP_?_7
+Added Member To Class: ClassName=Schematic_RFID Member=Component IP_? IP5306

@@ -1,0 +1,5 @@
+Change Component Comment : Designator=H2 Old Comment=25% New Comment=LED1 25%
+Change Component Comment : Designator=H3 Old Comment=50% New Comment=LED2 50%
+Change Component Comment : Designator=H5 Old Comment=75% New Comment=LED3 75%
+Change Component Comment : Designator=H4 Old Comment=100% New Comment=LED4 100%
+Added Member To Class: ClassName=Schematic_RFID Member=Component L1 1uH 3A

@@ -1,0 +1,12 @@
+Removed Member From Class: ClassName=Cam_bien_Sche Member=JP11
+Change Component Designator: OldDesignator=JP1 NewDesignator=JP3
+Change Component Designator: OldDesignator=JP2 NewDesignator=JP1
+Change Component Designator: OldDesignator=JP3 NewDesignator=JP2
+Change Component Designator: OldDesignator=JP4 NewDesignator=JP6
+Change Component Designator: OldDesignator=JP5 NewDesignator=JP4
+Change Component Designator: OldDesignator=JP6 NewDesignator=JP5
+Change Component Designator: OldDesignator=JP7 NewDesignator=JP9
+Change Component Designator: OldDesignator=JP11 NewDesignator=JP7
+Change Component Designator: OldDesignator=JP15 NewDesignator=JP8
+Change Component Designator: OldDesignator=JP16 NewDesignator=JP10
+Added Member To Class: ClassName=Cam_bien_Sche Member=Component JP9 JP hien thi

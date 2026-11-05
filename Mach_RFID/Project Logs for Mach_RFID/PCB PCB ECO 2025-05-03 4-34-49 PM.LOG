@@ -1,0 +1,120 @@
+Removed Pin From Net: NetName=GND Pin=JP1-1
+Removed Pin From Net: NetName=TX0 Pin=JP1-2
+Removed Pin From Net: NetName=RX0 Pin=JP1-3
+Removed Pin From Net: NetName=3V3 Pin=JP1-4
+Removed Member From Class: ClassName=Schematic_RFID Member=JP?
+Removed Member From Class: ClassName=Schematic_RFID Member=L?
+Removed Member From Class: ClassName=Schematic_RFID Member=USB?
+Change Component Comment : Designator=JP9 Old Comment=JP 1x8 2.54 New Comment=JP RFID
+Change Component Designator: OldDesignator=1812_? NewDesignator=1
+Change Component Designator: OldDesignator=C? NewDesignator=C3
+Change Component Designator: OldDesignator=C? NewDesignator=C4
+Change Component Designator: OldDesignator=C? NewDesignator=C5
+Change Component Designator: OldDesignator=C? NewDesignator=C6
+Change Component Designator: OldDesignator=C? NewDesignator=C7
+Change Component Designator: OldDesignator=C? NewDesignator=C8
+Change Component Designator: OldDesignator=C? NewDesignator=C9
+Change Component Designator: OldDesignator=H? NewDesignator=H1
+Change Component Designator: OldDesignator=JP? NewDesignator=JP1
+Change Component Designator: OldDesignator=JP? NewDesignator=JP10
+Change Component Designator: OldDesignator=L? NewDesignator=L6
+Change Component Designator: OldDesignator=R? NewDesignator=R8
+Change Component Designator: OldDesignator=R? NewDesignator=R9
+Change Component Designator: OldDesignator=R? NewDesignator=R10
+Change Component Designator: OldDesignator=R? NewDesignator=R11
+Change Component Designator: OldDesignator=R? NewDesignator=R12
+Change Component Designator: OldDesignator=USB? NewDesignator=USB1
+Added Component: Designator=AMS1(SOT223)
+Add component (AddParameter): Name = "Chung_Loai"; Value = "Dán"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Don_Vi"; Value = "Con"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ghi_Chu"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Kieu_Chan"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ma_Hang"; Value = "MH000596"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "AMS1117-3.3V SOT223"; VariantName = "[No Variations]"
+Added Component: Designator=H2(XH2.54M-2)
+Add component (AddParameter): Name = "Chung_Loai"; Value = "C?m"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Don_Vi"; Value = "Con"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ghi_Chu"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Kieu_Chan"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ma_Hang"; Value = "MH001283"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ten_Linh_Kien"; Value = "Header 2P XH2.54-2P Ð?c Th?ng"; VariantName = "[No Variations]"
+Added Component: Designator=H3(XH2.54M-2)
+Add component (AddParameter): Name = "Chung_Loai"; Value = "C?m"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Don_Vi"; Value = "Con"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ghi_Chu"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Kieu_Chan"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ma_Hang"; Value = "MH001283"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ten_Linh_Kien"; Value = "Header 2P XH2.54-2P Ð?c Th?ng"; VariantName = "[No Variations]"
+Added Component: Designator=H4(XH2.54M-2)
+Add component (AddParameter): Name = "Chung_Loai"; Value = "C?m"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Don_Vi"; Value = "Con"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ghi_Chu"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Kieu_Chan"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ma_Hang"; Value = "MH001283"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ten_Linh_Kien"; Value = "Header 2P XH2.54-2P Ð?c Th?ng"; VariantName = "[No Variations]"
+Added Component: Designator=H5(XH2.54M-2)
+Add component (AddParameter): Name = "Chung_Loai"; Value = "C?m"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Don_Vi"; Value = "Con"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ghi_Chu"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Kieu_Chan"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ma_Hang"; Value = "MH001283"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ten_Linh_Kien"; Value = "Header 2P XH2.54-2P Ð?c Th?ng"; VariantName = "[No Variations]"
+Added Component: Designator=JP11(JP 1x4 DT)
+Add component (AddParameter): Name = "Chung_Loai"; Value = "C?m"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Don_Vi"; Value = "Con"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ghi_Chu"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Kieu_Chan"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ma_Hang"; Value = "MH000903"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ten_Linh_Kien"; Value = "Jump Ðon Ð?c 2.54MM 1x40P Th?ng 11MM"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=AMS1-1
+Added Pin To Net: NetName=VOUT Pin=AMS1-3
+Added Pin To Net: NetName=GND Pin=JP11-1
+Added Pin To Net: NetName=TX0 Pin=JP11-2
+Added Pin To Net: NetName=RX0 Pin=JP11-3
+Added Pin To Net: NetName=3V3 Pin=JP11-4
+Change Net Name : Old Net Name=NetJP?_1 New Net Name=NetJP10_1
+Added Pin To Net: NetName=NetH2_1 Pin=H2-1
+Added Pin To Net: NetName=NetH2_1 Pin=H3-2
+Added Pin To Net: NetName=NetH2_1 Pin=H4-2
+Added Pin To Net: NetName=NetH2_1 Pin=H5-1
+Added Pin To Net: NetName=NetH2_1 Pin=R10-1
+Added Net: Name=NetH2_1
+Added Pin To Net: NetName=NetH2_2 Pin=H2-2
+Added Pin To Net: NetName=NetH2_2 Pin=H3-1
+Added Pin To Net: NetName=NetH2_2 Pin=R8-1
+Added Net: Name=NetH2_2
+Added Pin To Net: NetName=NetH4_1 Pin=H4-1
+Added Pin To Net: NetName=NetH4_1 Pin=H5-2
+Added Pin To Net: NetName=NetH4_1 Pin=R9-1
+Added Net: Name=NetH4_1
+Added Pin To Net: NetName=NetIP_1_2 Pin=R8-2
+Added Net: Name=NetIP_1_2
+Added Pin To Net: NetName=NetIP_1_3 Pin=R9-2
+Added Net: Name=NetIP_1_3
+Added Pin To Net: NetName=NetIP_1_4 Pin=R10-2
+Added Net: Name=NetIP_1_4
+Added Pin To Net: NetName=NetIP_1_5 Pin=R12-1
+Added Net: Name=NetIP_1_5
+Added Pin To Net: NetName=NetIP_1_6 Pin=R11-1
+Added Net: Name=NetIP_1_6
+Added Pin To Net: NetName=NetIP_1_7 Pin=L6-1
+Added Net: Name=NetIP_1_7
+Added Member To Class: ClassName=Schematic_RFID Member=Component AMS1 AMS1117-3.3V
+Added Member To Class: ClassName=Schematic_RFID Member=Component C3 10uF
+Added Member To Class: ClassName=Schematic_RFID Member=Component C5 471
+Added Member To Class: ClassName=Schematic_RFID Member=Component C6 105
+Added Member To Class: ClassName=Schematic_RFID Member=Component C7 471
+Added Member To Class: ClassName=Schematic_RFID Member=Component C8 471
+Added Member To Class: ClassName=Schematic_RFID Member=Component C9 105
+Added Member To Class: ClassName=Schematic_RFID Member=Component H2 LED1 25%
+Added Member To Class: ClassName=Schematic_RFID Member=Component H3 LED2 50%
+Added Member To Class: ClassName=Schematic_RFID Member=Component H4 LED4 100%
+Added Member To Class: ClassName=Schematic_RFID Member=Component H5 LED3 75%
+Added Member To Class: ClassName=Schematic_RFID Member=Component JP10 jump noi sw
+Added Member To Class: ClassName=Schematic_RFID Member=Component JP11 Jump n?p code
+Added Member To Class: ClassName=Schematic_RFID Member=Component L6 1uH 3A
+Added Member To Class: ClassName=Schematic_RFID Member=Component R8 1k
+Added Member To Class: ClassName=Schematic_RFID Member=Component R10 1k
+Added Member To Class: ClassName=Schematic_RFID Member=Component R11 0R
+Added Member To Class: ClassName=Schematic_RFID Member=Component R12 10k
+Added Member To Class: ClassName=Schematic_RFID Member=Component USB1 USB Micro 5p DIP

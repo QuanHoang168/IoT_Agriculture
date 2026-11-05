@@ -1,0 +1,11 @@
+Added Pin To Net: NetName=VIN Pin=USB1-1
+Added Pin To Net: NetName=GND Pin=USB1-5
+Added Pin To Net: NetName=GND Pin=USB1-5
+Added Pin To Net: NetName=GND Pin=USB1-5
+Added Pin To Net: NetName=GND Pin=USB1-5
+Added Pin To Net: NetName=GND Pin=USB1-5
+Added Pin To Net: NetName=GND Pin=USB1-5
+Added Pin To Net: NetName=GND Pin=USB1-5
+Added Member To Class: ClassName=Schematic_RFID Member=Component C4 10uF
+Added Member To Class: ClassName=Schematic_RFID Member=Component JP1 USB2
+Added Member To Class: ClassName=Schematic_RFID Member=Component R9 1k

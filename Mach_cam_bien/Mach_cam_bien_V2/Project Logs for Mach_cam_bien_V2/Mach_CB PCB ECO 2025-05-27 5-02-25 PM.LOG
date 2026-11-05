@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=5V Pin=C3-1
+Removed Pin From Net: NetName=3V3_2 Pin=C6-1
+Added Pin To Net: NetName=3V3_2 Pin=C3-1
+Added Pin To Net: NetName=5V Pin=C6-1
+Added Member To Class: ClassName=Cam_bien_Sche Member=Component JP2 JP 1x10 2.54
+Added Member To Class: ClassName=Cam_bien_Sche Member=Component JP3 jump nhiet do
+Added Member To Class: ClassName=Cam_bien_Sche Member=Component JP4 JP 1x5 2.54
+Added Member To Class: ClassName=Cam_bien_Sche Member=Component JP6 jp anh sang
+Added Member To Class: ClassName=Cam_bien_Sche Member=Component JP7 JP them
