@@ -1,1 +1,7 @@
-# IoT_Agriculture: This project simulates the smart garden, featuring Mustard green as the object. We monitored them through the parameters: Temperature, Light, Humidity and Soil moisture. We create the system with 6 square area, each of them have the dimension of 200x200mm and distinguished by RFID code. In addition, this system has the capability of moving to each plot of plant and captured the image from a vertical. This image data will be transfered to server and applied the AI model (YoLo V8) to analyze its health status. In order to implement that, we create 3 PCB: Sensor_Node, RFID_Node and Control_Node.
+# IoT_Agriculture: This project simulates the smart garden, featuring Mustard green as the object. We monitored them through the parameters: Temperature, Light, Humidity and Soil moisture.
+We create the system with 6 square area, each of them have the dimension of 200x200mm and distinguished by RFID code. 
+In addition, this system has the capability of moving to each plot of plant and captured the image from a vertical. This image data will be transfered to server and applied the AI model (YoLo V8) to analyze its health status. 
+In order to implement that, we create 3 PCB: Sensor_Node, RFID_Node and Control_Node.
+- Sensor_Node: Collecting environmental data: temperature, light, air humidity, soil moisture.
+- Control_Node: Handle a motion mechanism along the x and y axes, equipped with a camera for capturing images of crops.
+- RFID_Node: Scan 
