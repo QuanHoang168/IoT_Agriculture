@@ -4,4 +4,4 @@ In addition, this system has the capability of moving to each plot of plant and 
 In order to implement that, we create 3 PCB: Sensor_Node, RFID_Node and Control_Node.
 - Sensor_Node: Collecting environmental data: temperature, light, air humidity, soil moisture.
 - Control_Node: Handle a motion mechanism along the x and y axes, equipped with a camera for capturing images of crops.
-- RFID_Node: Scan 
+- RFID_Node: Divide each RFID code into each plot of plant to define and distinguish them.
